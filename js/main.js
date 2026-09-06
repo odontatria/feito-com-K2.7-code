@@ -12,29 +12,35 @@
     toggle.addEventListener('click', function () {
       var open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
     });
     nav.addEventListener('click', function (e) {
       if (e.target.closest('a')) {
         nav.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
       }
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && nav.classList.contains('open')) {
         nav.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
         toggle.focus();
       }
     });
   }
 
-  /* ---------- SCROLL: HEADER + BOTÃO TOPO ---------- */
-  var header = $('#siteHeader'), toTop = $('#toTop'), ticking = false;
+  /* ---------- SCROLL: HEADER + BOTÃO TOPO + PARALLAX ---------- */
+  var header = $('#siteHeader'), toTop = $('#toTop'), heroBg = $('#heroBg'), ticking = false;
 
   function onScroll() {
     var y = window.pageYOffset;
     if (header) header.classList.toggle('scrolled', y > 60);
     if (toTop) toTop.classList.toggle('show', y > 600);
+    if (heroBg && y < window.innerHeight) {
+      heroBg.style.transform = 'scale(1.08) translateY(' + (y * 0.25) + 'px)';
+    }
     ticking = false;
   }
   window.addEventListener('scroll', function () {
@@ -48,9 +54,7 @@
     });
   }
 
-  /* ---------- HERO SLIDER ----------
-     Imagens lidas de data-hero-images no #heroBg (definido em cada HTML).
-     Ausente ou com 1 item => background estático, sem timer e sem dots. */
+  /* ---------- HERO SLIDER ---------- */
   (function heroSlider() {
     var bg = $('#heroBg');
     if (!bg) return;
@@ -110,10 +114,29 @@
     });
   })();
 
+  /* ---------- TILT NOS CARDS ---------- */
+  function addTilt(selector) {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    $$(selector).forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = 'perspective(1000px) rotateY(' + (x * 6) + 'deg) rotateX(' + (-y * 6) + 'deg) translateY(-8px)';
+      });
+      card.addEventListener('mouseleave', function () {
+        card.style.transform = '';
+      });
+    });
+  }
+  addTilt('.feature-card');
+  addTilt('.plan');
+  addTilt('.testimonial');
+
   /* ---------- STAGGER NOS GRIDS ---------- */
   $$('.features-grid,.plans-grid,.testimonials-grid,.stats-grid,.veja-tambem-grid').forEach(function (g) {
     Array.prototype.forEach.call(g.children, function (c, i) {
-      c.style.transitionDelay = Math.min(i * 80, 480) + 'ms';
+      c.style.transitionDelay = Math.min(i * 90, 540) + 'ms';
     });
   });
 
@@ -165,8 +188,9 @@
       var t0 = null;
       function step(ts) {
         if (!t0) t0 = ts;
-        var p = Math.min((ts - t0) / 1400, 1);
-        el.textContent = Math.floor(end * (1 - Math.pow(1 - p, 3))).toLocaleString('pt-BR');
+        var p = Math.min((ts - t0) / 1600, 1);
+        var eased = 1 - Math.pow(1 - p, 4);
+        el.textContent = Math.floor(end * eased).toLocaleString('pt-BR');
         if (p < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
