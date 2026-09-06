@@ -17,6 +17,9 @@
 <meta property="og:image" content="https://www.odontatria.com.br/site/img/og-odontatria.jpg">
 <meta name="theme-color" content="#0F3B4C">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 <link rel="icon" href="site/img/favicon.svg" type="image/svg+xml">
@@ -52,6 +55,11 @@
     <div class="hero-bg" id="heroBg" aria-hidden="true"
          data-hero-images="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600&q=70|https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1600&q=70|https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1600&q=70"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-shapes" aria-hidden="true">
+      <span class="shape shape-1"></span>
+      <span class="shape shape-2"></span>
+      <span class="shape shape-3"></span>
+    </div>
     <div class="container hero-content">
       <span class="hero-subtitle">Odontologia digital • Medianeira e região</span>
       <h1 class="hero-title">Clínica Odontológica em Medianeira — PR</h1>
@@ -68,6 +76,9 @@
       </ul>
     </div>
     <div class="hero-dots" id="heroDots" role="tablist" aria-label="Slides"></div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span class="mouse"><span class="wheel"></span></span>
+    </div>
   </section>
 
   <!-- MÉTRICAS -->
@@ -87,31 +98,37 @@
       <p class="section-sub reveal">Especialidades integradas, com planejamento digital e equipe própria.</p>
       <div class="features-grid">
         <article class="feature-card reveal">
+          <div class="feature-glow"></div>
           <div class="feature-icon" aria-hidden="true">🦷</div>
           <h3>Implante dentário</h3>
           <p>Reposição de dentes ausentes com implantes de titânio e planejamento guiado por tomografia.</p>
         </article>
         <article class="feature-card reveal">
+          <div class="feature-glow"></div>
           <div class="feature-icon" aria-hidden="true">📐</div>
           <h3>Ortodontia</h3>
           <p>Aparelho fixo metálico, estético e alinhadores transparentes para adultos e adolescentes.</p>
         </article>
         <article class="feature-card reveal">
+          <div class="feature-glow"></div>
           <div class="feature-icon" aria-hidden="true">✨</div>
           <h3>Estética e clareamento</h3>
           <p>Clareamento a laser, lentes de contato dental e facetas em resina com prova estética prévia.</p>
         </article>
         <article class="feature-card reveal">
+          <div class="feature-glow"></div>
           <div class="feature-icon" aria-hidden="true">👶</div>
           <h3>Odontopediatria</h3>
           <p>Atendimento infantil com abordagem lúdica, prevenção de cárie e acompanhamento da troca dentária.</p>
         </article>
         <article class="feature-card reveal">
+          <div class="feature-glow"></div>
           <div class="feature-icon" aria-hidden="true">🩺</div>
           <h3>Endodontia e cirurgia</h3>
           <p>Tratamento de canal com localizador apical e extração de sisos com técnica minimamente invasiva.</p>
         </article>
         <article class="feature-card reveal">
+          <div class="feature-glow"></div>
           <div class="feature-icon" aria-hidden="true">🔬</div>
           <h3>Próteses e reabilitação</h3>
           <p>Coroas, protocolos e próteses removíveis produzidas em laboratório digital parceiro.</p>
@@ -122,6 +139,7 @@
 
   <!-- SOBRE -->
   <section class="section section-alt" id="sobre">
+    <div class="section-blob" aria-hidden="true"></div>
     <div class="container about-grid">
       <div class="about-media reveal">
         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
@@ -146,8 +164,10 @@
       <p class="section-sub reveal">Escolha o caminho que faz sentido para o seu caso. Valores sob avaliação clínica.</p>
       <div class="plans-grid">
         <article class="plan reveal">
-          <h3>Primeira avaliação</h3>
-          <p class="plan-for">Para quem ainda não sabe o que precisa</p>
+          <div class="plan-header">
+            <h3>Primeira avaliação</h3>
+            <p class="plan-for">Para quem ainda não sabe o que precisa</p>
+          </div>
           <ul>
             <li>Exame clínico completo</li>
             <li>Radiografia digital</li>
@@ -158,8 +178,10 @@
         </article>
         <article class="plan plan-featured reveal">
           <span class="plan-tag">Mais procurado</span>
-          <h3>Tratamento completo</h3>
-          <p class="plan-for">Reabilitação em etapas planejadas</p>
+          <div class="plan-header">
+            <h3>Tratamento completo</h3>
+            <p class="plan-for">Reabilitação em etapas planejadas</p>
+          </div>
           <ul>
             <li>Planejamento digital do caso</li>
             <li>Especialistas integrados</li>
@@ -169,8 +191,10 @@
           <a class="btn btn-primary" href="https://wa.me/5545998396286?text=Quero%20saber%20sobre%20tratamento%20completo" target="_blank" rel="noopener">Falar agora</a>
         </article>
         <article class="plan reveal">
-          <h3>Urgência odontológica</h3>
-          <p class="plan-for">Dor, trauma ou restauração quebrada</p>
+          <div class="plan-header">
+            <h3>Urgência odontológica</h3>
+            <p class="plan-for">Dor, trauma ou restauração quebrada</p>
+          </div>
           <ul>
             <li>Encaixe no mesmo dia</li>
             <li>Controle imediato da dor</li>
@@ -191,17 +215,23 @@
         <article class="testimonial reveal">
           <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
           <p>“Coloquei dois implantes e não senti dor em nenhuma etapa. Explicaram cada passo antes de começar.”</p>
-          <strong>Adriana S.</strong><small>Implante dentário — Medianeira</small>
+          <div class="testimonial-author">
+            <strong>Adriana S.</strong><small>Implante dentário — Medianeira</small>
+          </div>
         </article>
         <article class="testimonial reveal">
           <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
           <p>“Meu filho tinha pavor de dentista. Hoje ele pede para ir. A equipe infantil é excelente.”</p>
-          <strong>Fernando R.</strong><small>Odontopediatria — Matelândia</small>
+          <div class="testimonial-author">
+            <strong>Fernando R.</strong><small>Odontopediatria — Matelândia</small>
+          </div>
         </article>
         <article class="testimonial reveal">
           <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
           <p>“Usei alinhadores transparentes por 14 meses. Resultado exatamente como no planejamento digital.”</p>
-          <strong>Camila T.</strong><small>Ortodontia — São Miguel do Iguaçu</small>
+          <div class="testimonial-author">
+            <strong>Camila T.</strong><small>Ortodontia — São Miguel do Iguaçu</small>
+          </div>
         </article>
       </div>
     </div>
@@ -272,7 +302,7 @@
         <span class="brand-text">ODONTÁTRIA</span>
       </div>
       <p>Odontátria — clínica odontológica completa em Medianeira. Implantes, ortodontia, estética e odontopediatria com planejamento digital.</p>
-      <p><small>Responsável técnico: Dr. Nome Sobrenome — CRO-PR 00000</small></p><!-- ⚠ CRO obrigatório (CFO) -->
+      <p><small>Responsável técnico: Dr. Nome Sobrenome — CRO-PR 00000</small></p>
     </div>
     <div class="footer-col reveal">
       <h3>Tratamentos</h3>
